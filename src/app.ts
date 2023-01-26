@@ -1,7 +1,10 @@
 import express, { Express } from "express";
 import { config } from "dotenv";
 
+import { initConnection } from "./config/database";
+
 config();
+initConnection();
 
 const app: Express = express();
 
