@@ -8,17 +8,6 @@ export const list = async (req: Request, res: Response) => {
 };
 
 export const save = async (req: Request<{}, {}, User>, res: Response) => {
-  if (!!(await UserModel.findOne({ email: req.body.email }))) {
-    return res.json({
-      message: "Email exist",
-    });
-  }
-  if (!!(await UserModel.findOne({ username: req.body.username }))) {
-    return res.json({
-      message: "Username exist",
-    });
-  }
-
   let user = new UserModel(req.body);
 
   const salt = bcryptjs.genSaltSync(10);
