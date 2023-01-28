@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { list, save } from "./controller";
+import { list, save, update } from "./controller";
 import { body } from "express-validator";
 import validarCampos from "../helpers/validar-campos";
 import { checkEmail, checkUsername } from "./checks";
@@ -19,4 +19,6 @@ router.post(
   ],
   save
 );
+
+router.put("/", [], update);
 export default router;

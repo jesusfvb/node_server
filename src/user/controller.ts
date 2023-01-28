@@ -16,3 +16,5 @@ export const save = async (req: Request<{}, {}, User>, res: Response) => {
   await user.save();
   return res.json(user);
 };
+
+export const update = async (req: Request, res: Response) => {};
