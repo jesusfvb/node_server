@@ -30,6 +30,8 @@ const UserSchema = new Schema<User>(
       transform: function (doc, ret) {
         delete ret.password;
         delete ret.__v;
+        ret.id = ret._id;
+        delete ret._id;
       },
     },
   }
