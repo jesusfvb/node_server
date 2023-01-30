@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import bcryptjs from "bcryptjs";
 import { createJwt } from "../helpers/create-jwt";
 import User from "../user/model";
-import { ValidationError } from "express-validator";
 
 export const login = async (
   req: Request<{}, {}, { email: string; password: string }>,
@@ -22,7 +21,7 @@ export const login = async (
     });
   }
 
-  if (!bcryptjs.compareSync(req.body.password, user.password)) {
+  if (!bcryptjs.compareSync(password, user.password)) {
     return res.status(400).json({
       errors: [
         {

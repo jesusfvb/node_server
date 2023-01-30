@@ -12,9 +12,6 @@ export const save = async (req: Request<{}, {}, User>, res: Response) => {
 
   const salt = bcryptjs.genSaltSync(10);
   user.password = bcryptjs.hashSync(user.password, salt);
-
   await user.save();
   return res.json(user);
 };
-
-export const update = async (req: Request, res: Response) => {};

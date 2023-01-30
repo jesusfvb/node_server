@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { list, save, update } from "./controller";
+import { list, save } from "./controller";
 import { body } from "express-validator";
 import validarCampos from "../helpers/validar-campos";
 import { checkEmail, checkUsername } from "./checks";
+import { validationJWT } from "../helpers/validar-jwt";
 
 const router = Router();
 
-router.get("/", list);
+router.get("/", [validationJWT()], list);
 
 router.post(
   "/",
@@ -20,5 +21,4 @@ router.post(
   save
 );
 
-router.put("/", [], update);
 export default router;
